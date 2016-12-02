@@ -38,7 +38,7 @@ OBJS= \
 	build/miner.o
 
 
-all: nexus_cpuminer
+all: testphone
 
 build/%.o: %.cpp
 	$(CXX) -c $(xCXXFLAGS) -MMD -o $@ $<
@@ -62,12 +62,12 @@ build/%.o: hash/%.cpp
 	  rm -f $(@:%.o=%.d)
 
 
-nexus_cpuminer: $(OBJS:obj/%=build/%)
+testphone: $(OBJS:obj/%=build/%)
 	$(CXX) $(xCXXFLAGS) -rdynamic -o $@ $^ $(LDFLAGS) $(LIBS)
 
 
 clean:
-	-rm -f nexus_cpuminer
+	-rm -f testphone
 	-rm -f build/*.o
 
 FORCE:
